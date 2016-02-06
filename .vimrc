@@ -35,6 +35,34 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "
+"
+"----------Latex settings----------
+
+" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+" filetype plugin on
+"
+" IMPORTANT: win32 users will need to have 'shellslash' set so that latex
+" can be called correctly.
+" set shellslash
+
+" IMPORTANT: grep will sometimes skip displaying the file name if you
+" search in a singe file. This will confuse Latex-Suite. Set your grep
+" program to always generate a file-name.
+set grepprg=grep\ -nH\ $*
+
+" OPTIONAL: This enables automatic indentation as you type.
+filetype indent on
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults
+" to
+" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" The following changes the default filetype back to 'tex':
+ let g:tex_flavor='latex'
+
+"-------------- my stuff----------
+"set background=dark
+colorscheme wombat256i
+syntax on
 " General settings
 set tabstop=4
 set shiftwidth=4
@@ -43,10 +71,11 @@ set autoindent
 set number
 set relativenumber
 set noexpandtab
-"highlighting
-syntax enable
-colorscheme wombat256mod
+autocmd FileType hs setlocal expandtab
+map <C-n> :NERDTreeToggle<CR>
+set backspace=indent,eol,start
 set secure
+set mouse=a
 "set exrc
 
 "ycm settings

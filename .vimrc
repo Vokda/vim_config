@@ -11,14 +11,14 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " You complete me  <3
-Plugin 'Valloric/YouCompleteMe'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-
-" webbrowser plugin for VIM! YAY!
+" NERDTree for browsing
 Plugin 'scrooloose/nerdtree'
 
+" You Complete Me (YCM)
+Plugin 'Valloric/YouCompleteMe'
+
+" perl highlight
+"Plugin 'vim-perl/vim-perl'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -63,6 +63,7 @@ filetype indent on
 "set background=dark
 colorscheme wombat256i
 syntax on
+" General settings
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -75,7 +76,21 @@ map <C-n> :NERDTreeToggle<CR>
 set backspace=indent,eol,start
 set secure
 set mouse=a
-"set exrc
+set wm=2
+set wildmode=longest:full,full
+set wildmenu
+set splitright
+set guitablabel=\[%N\]\ %t\ %M
+set textwidth=110
+set fo=cqt
+set smartindent
+
+"folding
+set foldmethod=syntax
+set foldlevel=1
+"set foldclose=all
+set foldopen=all
+set foldnestmax=1
 
 "ycm settings
 let g:ycm_add_preview_to_completeopt = 0
@@ -84,12 +99,28 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_complete_in_comments = 0
-let g:ycm_semantic_triggers = 1
+let g:ycm_confirm_extra_conf = 0
+"let g:ycm_semantic_triggers = 1
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 "let g:ycm_use_ultisnips_completer = 1
 let g:ycm_auto_trigger = 1
-let g:ycm_warning_symbol = '⚠'
+"let g:ycm_warning_symbol = '>>'
+let g:ycm_filetype_blacklist = { 'tex': 1 }
 "let g:ycm_min_num_of_chars_for_completion = 99
 set cindent
 "set cino=0(,0{,0},0),:,0#,!^F,o,O,e
 au FileType c,cpp setlocal comments-=:// comments+=f://
+
+" bracket completion.
+"inoremap {		{<CR><CR>}<Up><Tab>
+"inoremap {<CR>	{<CR>} <Esc>0
+"inoremap {{		{
+"inoremap {}		{}<Left>
+
+
+"inoremap (		()<Left>
+"inoremap ()		()<Left>
+
+"inoremap [		[]<Left> 
+"inoremap []		[]<Left> 
+

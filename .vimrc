@@ -19,6 +19,8 @@ Plugin 'Valloric/YouCompleteMe'
 " webbrowser plugin for VIM! YAY!
 Plugin 'scrooloose/nerdtree'
 
+"for a working color that looks nice on this computer
+"Plugin 'chriskempson/base16-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -74,8 +76,10 @@ autocmd FileType hs setlocal expandtab
 map <C-n> :NERDTreeToggle<CR>
 set backspace=indent,eol,start
 set secure
+set exrc
+"set tw=80
+set wm=2
 set mouse=a
-"set exrc
 
 "ycm settings
 let g:ycm_add_preview_to_completeopt = 0
@@ -90,6 +94,8 @@ let g:ycm_semantic_triggers = 1
 let g:ycm_auto_trigger = 1
 let g:ycm_warning_symbol = '⚠'
 "let g:ycm_min_num_of_chars_for_completion = 99
+let g:ycm_filetype_blacklist = {'tex':1}
 set cindent
 "set cino=0(,0{,0},0),:,0#,!^F,o,O,e
+let g:ycm_confirm_extra_conf = 0
 au FileType c,cpp setlocal comments-=:// comments+=f://

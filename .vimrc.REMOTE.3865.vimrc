@@ -11,11 +11,14 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " You complete me  <3
+" NERDTree for browsing
+Plugin 'scrooloose/nerdtree'
+
+" You Complete Me (YCM)
 Plugin 'Valloric/YouCompleteMe'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-
+" perl highlight
+"Plugin 'vim-perl/vim-perl'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -69,10 +72,9 @@ set number
 set relativenumber
 set noexpandtab
 autocmd FileType hs setlocal expandtab
+map <C-n> :NERDTreeToggle<CR>
 set backspace=indent,eol,start
 set secure
-set exrc
-"set tw=80
 set mouse=a
 set wm=2
 set wildmode=longest:full,full
@@ -98,17 +100,15 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_complete_in_comments = 0
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_semantic_triggers = 0
+"let g:ycm_semantic_triggers = 1
 "let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 "let g:ycm_use_ultisnips_completer = 1
 let g:ycm_auto_trigger = 1
 "let g:ycm_warning_symbol = '>>'
 let g:ycm_filetype_blacklist = { 'tex': 1 }
 "let g:ycm_min_num_of_chars_for_completion = 99
-let g:ycm_filetype_blacklist = {'tex':1}
 set cindent
 "set cino=0(,0{,0},0),:,0#,!^F,o,O,e
-let g:ycm_confirm_extra_conf = 0
 au FileType c,cpp setlocal comments-=:// comments+=f://
 
 " bracket completion.

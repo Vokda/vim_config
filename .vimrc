@@ -37,12 +37,12 @@ filetype plugin indent on    " required
 "
 " --- Plug ---
 
-call plug#begin('~/.local/share/nvim/plugged')
+"call plug#begin('~/.vim/plugged')
 
 " completions
-Plug 'roxma/nvim-completion-manager'
+"Plug 'roxma/nvim-completion-manager'
 
-call plug#end()
+"call plug#end()
 
 
 "----------Latex settings----------
@@ -69,13 +69,19 @@ filetype indent on
  let g:tex_flavor='latex'
 
 "-------------- my stuff----------
+ "-- NERD tree stuff --
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeDirArrows=0
+let NERDTreeShowLineNumbers=1
+autocmd FileType nerdtree setlocal relativenumber
+":NerdTreeToggle "simply start vim up with nerd tree
+set encoding=utf-8 "to make nerd tree work properly
+
+
 "set background=dark
 colorscheme wombat256i
 syntax on
 " General settings
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
 set autoindent
 set number
 set relativenumber
@@ -97,6 +103,10 @@ set smartindent
 set smartcase
 set clipboard+=unnamed
 
+"bells
+set noerrorbells
+set vb t_vb=
+
 "folding
 set foldmethod=syntax
 set foldlevel=1
@@ -107,45 +117,21 @@ set colorcolumn=+1
 highlight ColorColumn ctermbg=brown
 set fo+=t
 set fo-=l
-
+set hlsearch
 
 "remaps
 nnoremap space zz
 nnoremap Y y$
+noremap <Tab> :tabn <CR>
+noremap <S-Tab> :tabp <CR>
+noremap <S-H> <C-w>h
+noremap <S-L> <C-w>l
+noremap <S-K> <C-w>k
+noremap <S-J> <C-w>j
 
-"ycm settings
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_autoclose_preview_window_after_completion = 0
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_complete_in_comments = 0
-let g:ycm_confirm_extra_conf = 0
-"let g:ycm_semantic_triggers = 1
-"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-"let g:ycm_use_ultisnips_completer = 1
-let g:ycm_auto_trigger = 1
-"let g:ycm_warning_symbol = '>>'
-let g:ycm_filetype_blacklist = { 'tex': 1 }
-"let g:ycm_min_num_of_chars_for_completion = 99
-set cindent
-"set cino=0(,0{,0},0),:,0#,!^F,o,O,e
-au FileType c,cpp setlocal comments-=:// comments+=f://
-
-" bracket completion.
-"inoremap {		{<CR><CR>}<Up><Tab>
-"inoremap {<CR>	{<CR>} <Esc>0
-"inoremap {{		{
-"inoremap {}		{}<Left>
-
-
-"inoremap (		()<Left>
-"inoremap ()		()<Left>
-
-"inoremap [		[]<Left> 
-"inoremap []		[]<Left> 
-
-"--- nvim completion ---
-
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" tab settings. Work uses 2 instead of 4
+"nnoremap <A-Tab> :set tabstop=4|:set shiftwidth=4|:set softtabstop=4 <CR>
+"nnoremap <C-Tab> :set tabstop=2|:set shiftwidth=2|:set softtabstop=2 <CR>
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2

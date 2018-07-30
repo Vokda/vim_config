@@ -3,26 +3,26 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" You complete me  <3
-" NERDTree for browsing
-Plugin 'scrooloose/nerdtree'
-
-" You Complete Me (YCM)
-"Plugin 'Valloric/YouCompleteMe'
-
-" perl highlight
-"Plugin 'vim-perl/vim-perl'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+"call vundle#begin()
+"" alternatively, pass a path where Vundle should install plugins
+""call vundle#begin('~/some/path/here')
+"
+"" let Vundle manage Vundle, required
+"Plugin 'gmarik/Vundle.vim'
+"
+"" You complete me  <3
+"" NERDTree for browsing
+"Plugin 'scrooloose/nerdtree'
+"
+"" You Complete Me (YCM)
+""Plugin 'Valloric/YouCompleteMe'
+"
+"" perl highlight
+""Plugin 'vim-perl/vim-perl'
+"
+"" All of your Plugins must be added before the following line
+"call vundle#end()            " required
+"filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -37,12 +37,13 @@ filetype plugin indent on    " required
 "
 " --- Plug ---
 
-"call plug#begin('~/.vim/plugged')
-
-" completions
+call plug#begin('~/.vim/plugged')
+"
+"" completions
 "Plug 'roxma/nvim-completion-manager'
+Plug 'scrooloose/nerdtree'
 
-"call plug#end()
+call plug#end()
 
 
 "----------Latex settings----------
@@ -82,6 +83,11 @@ set encoding=utf-8 "to make nerd tree work properly
 colorscheme wombat256i
 syntax on
 " General settings
+
+let tab_size=4
+let &tabstop=tab_size
+let &shiftwidth=tab_size
+let &softtabstop=tab_size
 set autoindent
 set number
 set relativenumber
@@ -96,7 +102,7 @@ set wildmode=longest:full,full
 set wildmenu
 set splitright
 set guitablabel=\[%N\]\ %t\ %M
-set textwidth=110
+"set textwidth=110
 set fo=cqt
 set smartindent
 "set cpo+=x
@@ -122,16 +128,12 @@ set hlsearch
 "remaps
 nnoremap space zz
 nnoremap Y y$
-noremap <Tab> :tabn <CR>
-noremap <S-Tab> :tabp <CR>
+"firefox like navigation for tabs
+nnoremap <tab> :tabn <CR>
+nnoremap <S-tab> :tabp <CR>
+nnoremap <C-t> :tabnew <CR>
+"move around windows
 noremap <S-H> <C-w>h
 noremap <S-L> <C-w>l
 noremap <S-K> <C-w>k
 noremap <S-J> <C-w>j
-
-" tab settings. Work uses 2 instead of 4
-"nnoremap <A-Tab> :set tabstop=4|:set shiftwidth=4|:set softtabstop=4 <CR>
-"nnoremap <C-Tab> :set tabstop=2|:set shiftwidth=2|:set softtabstop=2 <CR>
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
